@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Skeleton from './Skeleton';
 
 const getCompiledCode = async () => {
-  const res = fetch('htts://jsonplaceholder.typicode.com/todos/1').then((response) =>
+  const res = fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) =>
     response.json()
   );
 
