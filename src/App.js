@@ -26,7 +26,7 @@ const App = () => {
     <div className="container is-max-desktop wrap">
       <h1 className="title my-4 p-2">Mom, I'm Compiler</h1>
 
-      <Input handleSubmit={handleSubmit} handleChange={handleChange} />
+      <Input handleSubmit={handleSubmit} handleChange={handleChange} isDisabled={showOutput} />
 
       {showOutput && <Output handleClose={handleClose} text={text} />}
     </div>

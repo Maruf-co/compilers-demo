@@ -22,7 +22,7 @@ const Output = ({ text, handleClose }) => {
     content = <div>Error!</div>;
   } else {
     content = (
-      <div className="panel mt-6">
+      <div className="panel mt-6 mx-2">
         <p className="panel-heading">Output:</p>
         <div className="content border rounded m-4 p-2">{text}</div>
         <button onClick={handleClose} className="button is-danger m-4">
