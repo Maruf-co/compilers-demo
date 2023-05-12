@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
 
 import Input from './components/Input';
 import Output from './components/Output';
@@ -14,7 +13,6 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(text);
     setShowOutput(true);
   };
 

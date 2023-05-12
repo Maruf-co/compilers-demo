@@ -2,19 +2,26 @@ import { useQuery } from 'react-query';
 
 import Skeleton from './Skeleton';
 
-const getCompiledCode = async () => {
-  const res = fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) =>
-    response.json()
-  );
+const getCompiledCode = async (input) => {
+  const headers = {
+    'content-type': 'application/json',
+    accept: 'application/json',
+  };
+
+  const res = fetch('http://46.19.69.151:8000/compile', {
+    method: 'POST',
+    body: JSON.stringify({ code: input }),
+    headers,
+  })
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
 
   return res;
 };
 
 const Output = ({ text, handleClose }) => {
-  const { data, status } = useQuery('compiler', getCompiledCode);
+  const { data, status } = useQuery('compiler', () => getCompiledCode(text));
 
-  console.log(data);
-  console.log(status);
   let content;
   if (status === 'loading') {
     content = <Skeleton className="w-full h-52" />;
@@ -24,7 +31,7 @@ const Output = ({ text, handleClose }) => {
     content = (
       <div className="panel mt-6 mx-2">
         <p className="panel-heading">Output:</p>
-        <div className="content border rounded m-4 p-2">{text}</div>
+        <div className="content border rounded m-4 p-2">{data}</div>
         <button onClick={handleClose} className="button is-danger m-4">
           Close
         </button>
