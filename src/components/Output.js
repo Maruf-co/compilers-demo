@@ -3,12 +3,13 @@ import { useQuery } from 'react-query';
 import Skeleton from './Skeleton';
 
 const getCompiledCode = async (input) => {
+  const url = 'https://alobanov.space/compile';
   const headers = {
     'content-type': 'application/json',
     accept: 'application/json',
   };
 
-  const res = fetch('http://46.19.69.151:8000/compile', {
+  const res = fetch(url, {
     method: 'POST',
     body: JSON.stringify({ code: input }),
     headers,
